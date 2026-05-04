@@ -1,0 +1,19 @@
+{
+  "name": "Pocket Pup",
+  "short_name": "Pup",
+  "description": "A small sprite-map dog companion for iPhone.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f6edd9",
+  "theme_color": "#f6edd9",
+  "icons": [
+    {
+      "src": "./assets/icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

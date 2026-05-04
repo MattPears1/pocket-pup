@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f6edd9" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Pocket Pup" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./assets/icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Pocket Pup</title>
+  </head>
+  <body>
+    <main id="app" class="pet-shell" aria-label="Pocket Pup">
+      <section class="wallpaper" aria-label="Interactive dog area">
+        <div class="wallpaper__grain" aria-hidden="true"></div>
+        <div class="sun-chip" aria-hidden="true">
+          <span></span>
+        </div>
+
+        <div id="dockRail" class="dock-rail" aria-hidden="true">
+          <span class="dock-rail__handle"></span>
+          <span class="dock-rail__label">tap</span>
+        </div>
+
+        <div id="pet" class="pet" role="img" aria-label="Animated dog">
+          <div id="petSprite" class="pet__sprite"></div>
+          <div class="pet__shadow" aria-hidden="true"></div>
+        </div>
+
+        <div class="controls" aria-label="Dog controls">
+          <button id="resetButton" class="icon-button" type="button" title="Reset position" aria-label="Reset position">
+            <span aria-hidden="true">↺</span>
+          </button>
+          <button id="smallerButton" class="icon-button" type="button" title="Make smaller" aria-label="Make smaller">
+            <span aria-hidden="true">−</span>
+          </button>
+          <button id="largerButton" class="icon-button" type="button" title="Make larger" aria-label="Make larger">
+            <span aria-hidden="true">+</span>
+          </button>
+          <button id="sleepButton" class="icon-button" type="button" title="Nap" aria-label="Nap">
+            <span aria-hidden="true">z</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="./pet-config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
