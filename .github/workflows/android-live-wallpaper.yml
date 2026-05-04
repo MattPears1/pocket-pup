@@ -52,7 +52,7 @@ jobs:
       - name: Commit APK
         if: github.ref == 'refs/heads/main'
         run: |
-          if git diff --quiet -- downloads/android/pocket-pup-live-wallpaper-debug.apk; then
+          if [ -z "$(git status --porcelain -- downloads/android/pocket-pup-live-wallpaper-debug.apk)" ]; then
             echo "APK unchanged"
             exit 0
           fi
