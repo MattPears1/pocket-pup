@@ -5,7 +5,6 @@ import android.app.WallpaperManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -58,7 +57,7 @@ public final class MainActivity extends Activity {
         try {
             startActivity(intent);
         } catch (RuntimeException ignored) {
-            startActivity(new Intent(Settings.ACTION_LIVE_WALLPAPER_SETTINGS));
+            startActivity(new Intent(WallpaperManager.ACTION_LIVE_WALLPAPER_CHOOSER));
         }
     }
 
