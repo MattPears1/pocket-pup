@@ -1,0 +1,63 @@
+name: Build Android Live Wallpaper
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "android/PocketPupLiveWallpaper/**"
+      - ".github/workflows/android-live-wallpaper.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android platform
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10.2"
+
+      - name: Build debug APK
+        run: gradle -p android/PocketPupLiveWallpaper assembleDebug
+
+      - name: Stage APK for GitHub Pages
+        run: |
+          mkdir -p downloads/android
+          cp android/PocketPupLiveWallpaper/app/build/outputs/apk/debug/app-debug.apk downloads/android/pocket-pup-live-wallpaper-debug.apk
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pocket-pup-live-wallpaper-debug-apk
+          path: downloads/android/pocket-pup-live-wallpaper-debug.apk
+
+      - name: Commit APK
+        if: github.ref == 'refs/heads/main'
+        run: |
+          if git diff --quiet -- downloads/android/pocket-pup-live-wallpaper-debug.apk; then
+            echo "APK unchanged"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add downloads/android/pocket-pup-live-wallpaper-debug.apk
+          git commit -m "Update Android live wallpaper APK"
+          git push

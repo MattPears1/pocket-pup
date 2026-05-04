@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pocket Pup</string>
+    <string name="app_description">Animated dog sprite live wallpaper for Android.</string>
+    <string name="set_wallpaper">Set live wallpaper</string>
+    <string name="wallpaper_name">Pocket Pup Sprite</string>
+    <string name="wallpaper_description">The Pocket Pup dog sprite animates on a light background.</string>
+</resources>
